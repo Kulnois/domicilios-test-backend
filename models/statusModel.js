@@ -10,8 +10,18 @@ const statusSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    comments: [],
-    reactions: []
+    comments:  [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment',
+        },
+    ],
+    reactions: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Reaction',
+        },
+    ]
 }, {
     timestamps: true
 })
