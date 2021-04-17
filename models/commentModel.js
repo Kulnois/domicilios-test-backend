@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const statusSchema = mongoose.Schema({
+const commentSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -10,12 +10,15 @@ const statusSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    comments: [],
-    reactions: []
+    status: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Status'
+    },
 }, {
     timestamps: true
 })
 
-const status = mongoose.model('Status', statusSchema)
+const comment = mongoose.model('Comment', commentSchema)
 
-export default status
+export default comment
