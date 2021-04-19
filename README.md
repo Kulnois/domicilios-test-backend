@@ -1,4 +1,4 @@
-# [Domicilios](https://domicilios.herokuapp.com/api/)
+# [Domicilios](https://domicilios-web.herokuapp.com/api/)
 
 ![Product Gif](screenshots/domicilios.gif)
 
@@ -6,11 +6,11 @@ Api Sitio Web Domicilios.
 
 ### URL
 
-* [Status](https://domicilios.herokuapp.com/api/statuses) /api/statuses
-* [Users] /api/users
-* [Comment] /api/comments
+* [Status](https://domicilios-web.herokuapp.com/api/statuses) /api/statuses
+* [Users](https://domicilios-web.herokuapp.com/api/users) /api/users
+* [Comment](https://domicilios-web.herokuapp.com/api/comments) /api/comments
 
-[Ver](https://domicilios.herokuapp.com/api/).
+[Ver](https://domicilios-web.herokuapp.com/api/).
 
 ### Recursos
 * [Frontend Domicilios](https://github.com/Kulnois/domicilios-test-web)
