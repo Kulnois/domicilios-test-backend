@@ -5,7 +5,7 @@ import Reaction from '../models/reactionModel.js'
 // @route GET /api/reactions
 // @access Public
 const getReactions = asyncHandler(async (req, res) => {
-    const reactions = await Reaction.find({})
+    const reactions = await Reaction.find({}).populate('user', 'id name')
     res.json(reactions)
 })
 
@@ -43,7 +43,7 @@ const deleteReaction = asyncHandler(async (req, res) => {
 // @access Private
 const createReaction = asyncHandler(async (req, res) => {
     const { statusId } = req.body
-    const reaction = new Status({
+    const reaction = new Reaction({
         user: req.user._id,
         status: statusId
 

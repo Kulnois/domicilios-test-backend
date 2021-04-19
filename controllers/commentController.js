@@ -43,7 +43,7 @@ const deleteComment = asyncHandler(async (req, res) => {
 // @access Private
 const createComment = asyncHandler(async (req, res) => {
     const { content, statusId } = req.body
-    const comment = new Status({
+    const comment = new Comment({
         user: req.user._id,
         content: content,
         status: statusId

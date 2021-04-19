@@ -1,12 +1,30 @@
 import asyncHandler from 'express-async-handler'
 import Status from '../models/statusModel.js'
+import Comment from '../models/commentModel.js'
+import Reaction from '../models/reactionModel.js'
 
 // @desc Fetch all statuses
 // @route GET /api/statuses
 // @access Public
 const getStatuses = asyncHandler(async (req, res) => {
     const statuses = await Status.find({})
-    res.json(statuses)
+                                .populate('user', 'id name')
+                                .sort({createdAt: 'descending'})
+
+    const asyncRes = await Promise.all(statuses.map(async (i) => {
+        const comments = await Comment.find({status: i._id}).populate('user', 'id name')
+        const reactions = await Reaction.find({status: i._id})
+        return  {
+            _id: i.id,     
+            content: i.content,
+            user: i.user,
+            createdAt: i.createdAt,
+            updatedAt: i.updatedAt,
+            comments: comments,
+            reactions:  reactions
+        }
+    }));
+    res.json(asyncRes)
 })
 
 // @desc Fetch single status
